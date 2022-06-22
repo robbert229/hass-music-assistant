@@ -31,6 +31,7 @@ from .const import (
     CONF_SPOTIFY_USERNAME,
     CONF_TUNEIN_ENABLED,
     CONF_TUNEIN_USERNAME,
+    CONF_STREAM_DOMAIN,
     DEFAULT_NAME,
     DOMAIN,
 )
@@ -55,6 +56,7 @@ DEFAULT_CONFIG = {
     CONF_TUNEIN_USERNAME: "",
     CONF_FILE_ENABLED: False,
     CONF_FILE_DIRECTORY: "",
+    CONF_STREAM_DOMAIN: "",
 }
 
 
@@ -162,6 +164,9 @@ def get_music_schema(cur_conf: dict):
             ): bool,
             vol.Optional(
                 CONF_FILE_DIRECTORY, default=cur_conf[CONF_FILE_DIRECTORY]
+            ): str,
+            vol.Optional(
+                CONF_STREAM_DOMAIN, default=cur_conf[CONF_STREAM_DOMAIN]
             ): str,
         }
     )
