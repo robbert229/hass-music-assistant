@@ -64,7 +64,7 @@
         "data": {
           "hide_source_players": "Hide source players in the Home Assistant UI.",
           "create_mass_players": "Create mediaplayers for Music Assistant players in Home Assistant.",
-          "stream_ip": "Optional ip address override"
+          "stream_ip": "Optional stream_ip address override."
         }
       }
     },
