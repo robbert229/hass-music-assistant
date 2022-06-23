@@ -31,7 +31,7 @@ from .const import (
     CONF_SPOTIFY_USERNAME,
     CONF_TUNEIN_ENABLED,
     CONF_TUNEIN_USERNAME,
-    CONF_STREAM_DOMAIN,
+    CONF_STREAM_IP,
     DOMAIN,
     DOMAIN_EVENT,
 )
@@ -99,10 +99,10 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     
     stream_ip = hass.config.api.local_ip
     
-    if conf.get(CONF_STREAM_DOMAIN):
-        stream_ip = conf.get(CONF_STREAM_DOMAIN)
+    if conf.get(CONF_STREAM_IP):
+        stream_ip = conf.get(CONF_STREAM_IP)
 
-    LOGGER.info("the stream ip/domain is: {stream_ip}".format(stream_ip=stream_ip))
+    LOGGER.warning("the stream ip is: {stream_ip}".format(stream_ip=stream_ip))
     
     mass_conf = MassConfig(
         database_url=f"sqlite:///{db_file}", providers=providers, stream_ip=stream_ip

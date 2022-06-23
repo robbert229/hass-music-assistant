@@ -27,6 +27,7 @@ CONF_PLAYLISTS_DIRECTORY = "playlists_directory"
 
 CONF_MUTE_POWER_PLAYERS = "mute_power_players"
 
+CONF_STREAM_IP = "stream_ip"
 
 ATTR_SOURCE_ENTITY_ID = "source_entity_id"
 ATTR_IS_GROUP = "is_group"

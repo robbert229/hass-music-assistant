@@ -31,7 +31,7 @@ from .const import (
     CONF_SPOTIFY_USERNAME,
     CONF_TUNEIN_ENABLED,
     CONF_TUNEIN_USERNAME,
-    CONF_STREAM_DOMAIN,
+    CONF_STREAM_IP,
     DEFAULT_NAME,
     DOMAIN,
 )
@@ -164,9 +164,6 @@ def get_music_schema(cur_conf: dict):
             ): bool,
             vol.Optional(
                 CONF_FILE_DIRECTORY, default=cur_conf[CONF_FILE_DIRECTORY]
-            ): str,
-            vol.Optional(
-                CONF_STREAM_DOMAIN, default=cur_conf[CONF_STREAM_DOMAIN]
             ): str,
         }
     )
@@ -326,6 +323,9 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
                         CONF_CREATE_MASS_PLAYERS,
                         default=self.data[CONF_CREATE_MASS_PLAYERS],
                     ): selector.selector({"boolean": {}}),
+                    vol.Optional(
+                        CONF_STREAM_IP, default=cur_conf[CONF_STREAM_IP]
+                    ): str,
                 }
             ),
             last_step=True,
