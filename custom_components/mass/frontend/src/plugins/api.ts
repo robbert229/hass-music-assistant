@@ -801,10 +801,10 @@ export class MusicAssistantApi {
 
   public playMedia(
     queue_id: string,
-    uri: string | string[],
+    media: string | string[] | MediaItemType | MediaItemType[],
     command: QueueOption = QueueOption.PLAY
   ) {
-    this.executeCmd("play_media", { queue_id, command, uri });
+    this.executeCmd("play_media", { queue_id, command, media });
   }
 
   public startSync(media_type?: MediaType, prov_type?: ProviderType) {
@@ -863,7 +863,8 @@ export class MusicAssistantApi {
       else this.queues[queue.queue_id] = queue;
     } else if (msg.event == MassEventType.QUEUE_TIME_UPDATED) {
       const queueId = msg.object_id as string;
-      this.queues[queueId].elapsed_time = msg.data as unknown as number;
+      if (queueId in this.queues)
+        this.queues[queueId].elapsed_time = msg.data as unknown as number;
     } else if (msg.event == MassEventType.PLAYER_ADDED) {
       const player = msg.data as Player;
       this.players[player.player_id] = player;
